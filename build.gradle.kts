@@ -6,6 +6,10 @@ plugins {
 group = "io.mockxe.uni.s1.a9.map"
 version = "1.0-SNAPSHOT"
 
+application {
+    mainClass.set("io.mockxe.uni.s1.a9.map.Launcher")
+}
+
 repositories {
     mavenCentral()
 }
