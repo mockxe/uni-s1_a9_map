@@ -9,6 +9,8 @@ public abstract class AbstractMap<K, V> {
 
     public abstract void put(K key, V value);
 
+    public abstract Set<K> keysAsSet();
+
     public Set<V> getValuesAsSetOrThrow(Set<K> keys) throws UnknownKeyException {
         Set<V> set = new HashSet<>();
 

@@ -3,6 +3,8 @@ package io.mockxe.uni.s1.a9.map;
 import io.mockxe.uni.s1.a9.map.external.GenericArrayHelper;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ArrayMapTest {
@@ -40,6 +42,23 @@ class ArrayMapTest {
             assert map.getOrThrow("test" + i).equals(i);
         }
 
+    }
+
+    @Test
+    void testKeysAsSet() {
+        ArrayMap<String, Integer> map = new ArrayMap<>();
+
+        assert map.keysAsSet().isEmpty();
+
+        for (int i = 0; i <= 20; i++) {
+            map.put("test" + i, i);
+        }
+
+        Set<String> keys = map.keysAsSet();
+        assert keys.size() == 21;
+        for (int i = 20; i >= 0; i--) {
+            assert keys.contains("test" + i);
+        }
     }
 
 }

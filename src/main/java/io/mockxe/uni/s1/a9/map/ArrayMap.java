@@ -2,6 +2,9 @@ package io.mockxe.uni.s1.a9.map;
 
 import io.mockxe.uni.s1.a9.map.external.GenericArrayHelper;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ArrayMap<K, V> extends AbstractMap<K, V> {
 
     private Entry<K, V>[] entries;
@@ -39,6 +42,19 @@ public class ArrayMap<K, V> extends AbstractMap<K, V> {
         int oldLength = entries.length;
         entries = GenericArrayHelper.copyArrayWithIncreasedSize(entries, oldLength  * 2);
         entries[oldLength + 1] = new Entry<>(key, value);
+    }
+
+    @Override
+    public Set<K> keysAsSet() {
+        Set<K> set = new HashSet<>();
+
+        for (Entry<K, V> entry : entries) {
+            if (entry != null) {
+                set.add(entry.key());
+            }
+        }
+
+        return set;
     }
 
 }
